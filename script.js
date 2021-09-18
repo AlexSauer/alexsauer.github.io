@@ -34,8 +34,8 @@ window.addEventListener('mousemove',
     }
 );
 
-function randomBinary() {
-    return 2 * (Math.ceil(Math.random() - 0.5)) - 1;
+function randomBinary(p = 0.5) {
+    return 2 * (Math.ceil(Math.random() - (1-p))) - 1;
 }
 
 class Particle {
@@ -105,7 +105,12 @@ class Particle {
             // this.directionX = - this.directionX;
             // this.directionY = - this.directionY;
         }
-        this.x += this.directionX
+        // Introduce random movement changes
+        this.directionX *= (- randomBinary(0.01));
+        this.directionY *= (- randomBinary(0.01));
+
+        // Update position
+        this.x += this.directionX ;
         this.y += this.directionY;
 
         // Update the timer how long the particle already lives
