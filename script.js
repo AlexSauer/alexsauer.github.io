@@ -68,8 +68,6 @@ class Particle {
         }
     }
 
-
-
     update() {
         // Check if particle still within canvas, else change direction
         if(this.x > canvas.width || this.x < 0) {
